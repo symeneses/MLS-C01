@@ -9,6 +9,8 @@ Managed Apache Kafka, which is used for streaming data (log, IoT, clickstreams).
 
 `Producers > Shards (Provisioned in advance) > Consumers`
 
+**Quotas:** No limit on the number of shards or streams. A single shard can ingest up to 1 MB of data per second (including partition keys) or 1,000 records per second for writes. 
+
 2. Kinesis Analytics: for real time analytics.
 
 `Input stream + Reference tables (S3) > Analytics > Output stream + Errors`
