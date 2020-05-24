@@ -1,10 +1,16 @@
 # MLS-C01
 
-Preparation for MLS-C01 exam
+Review material and practice exercises to prepare for the exam.
+The content is intended as tool to **remember** the domains to be tested, thus, the notebooks contain short exercises useful to see some concepts (no AWS) in action and the notes explains *the theoretical minimum* (Yeah! I know I am not Leonard Susskind) in simple words of topics that are very complex and vast.
 
-For exams details, visit the offical site [here](https://aws.amazon.com/de/certification/certified-machine-learning-specialty/).
+The material is organized in the 4 domains of the exam and one practical, which contains exercises using AWS services and applying ML common tools.
+1. [Data Engineering](1_data_engineering/README.md)
+2. [Data Analysis](2_data_analysis/README.md)
+3. [Modelling](3_modelling/README.md)
+4. [Implementation](4_implementation/README.md)
+5. [Practical exercises in AWS](0_practical_exercises/README.md)
 
-## Domains
+## Exam Content Outline
 
 **Domain 1: Data Engineering (20%)**
 
@@ -32,3 +38,5 @@ For exams details, visit the offical site [here](https://aws.amazon.com/de/certi
   2. Recommend and implement the appropriate machine learning services and features for a given problem.
   3. Apply basic AWS security practices to machine learning solutions.
   4. Deploy and operationalize machine learning solutions.
+
+  For exams details, visit the official site [here](https://aws.amazon.com/de/certification/certified-machine-learning-specialty/).
