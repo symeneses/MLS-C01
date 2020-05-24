@@ -20,3 +20,8 @@ Managed cluster platform based on the Hadoop framework to run Big Data tools suc
 - EMRFS: Allow to use S3 as HDFS
 - Local system
 - EBS for HDFS
+
+
+# References
+
+- [AWS Documentation](https://docs.aws.amazon.com/index.html)

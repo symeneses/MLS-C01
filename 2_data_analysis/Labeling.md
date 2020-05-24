@@ -14,3 +14,8 @@ With **automated data labeling**, as the model is learning will send only ambigu
 
 - It provides built-in templates for common tasks (bounding boxes, images classification, NER i.a.)
 - Workers are either from Amazon Mechanical Turk or a private company
+
+
+# References
+
+- [AWS Documentation](https://docs.aws.amazon.com/index.html)

@@ -21,3 +21,8 @@ Serverless business intelligence service. It offers data analysis as a basic wor
 - Relational: S3, Aurora, Athena, RedShift, MySQL, Presto, Spark
 - Files: CSV, JSON, Excel, zip
 - SaaS sources: Adobe Analytics, GitHub, JIRA, Salesforce, Twitter
+
+
+# References
+
+- [AWS Documentation](https://docs.aws.amazon.com/index.html)
