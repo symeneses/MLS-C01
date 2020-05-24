@@ -26,3 +26,8 @@ Schedule Jobs
 ### Glue Triggers
 
 Execute ETL jobs based on events.
+
+
+# References
+
+- [AWS Documentation](https://docs.aws.amazon.com/index.html)

@@ -21,3 +21,7 @@ It is serverless as S3, so it doesn't require provisioning.
 # ElastiCache
 
 **In-memory** NoSQL database ideal to deploy a distributed cache environment. It works for Redis and Memcached engines.
+
+# References
+
+- [AWS Documentation](https://docs.aws.amazon.com/index.html)

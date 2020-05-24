@@ -24,3 +24,8 @@ ML Model available:
 4. Kinesis Video Streams: for real-time video processing or batch-oriented video analytics.
 
 `Producer (i.e. security camera, AWS DeepLens) > Consumer (Any DL model on EC2, AWS SageMaker, Amazon Rekognition video)`
+
+
+# References
+
+- [AWS Documentation](https://docs.aws.amazon.com/index.html)

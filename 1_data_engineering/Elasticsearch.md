@@ -4,3 +4,6 @@ Search NoSQL database and high-performance search engine used normally for log a
 
 ## Data Indexing
 
+# References
+
+- [AWS Documentation](https://docs.aws.amazon.com/index.html)
