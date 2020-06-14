@@ -186,7 +186,7 @@ Implemented using RNN and CNN with attention.
 
 ## Object2Vec
 
-Create vectors or embeddings of high-dimensional objects, where similar objects are close.
+Create vectors or embeddings of high-dimensional objects, where similar objects are close. Similar to Word2Vec, encoding sentences or paragraphs.
 
 **Input**
 - Pairs of integer token lists, these can be of different size
