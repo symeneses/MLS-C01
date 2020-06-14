@@ -32,7 +32,10 @@ Enable execution of resources into a private virtual network. Inside a VPC, subn
 
 Working with VPCs
 - Have public subnets for load balancers and web servers, and private subnets for databases
-- If the internet is disable for notebooks, the VPC needs a PrivateLink or NAT Gateway
+- If the internet is disable for notebooks, the VPC needs a PrivateLink or Network Address Translation (NAT) Gateway. 
+
+**NAT Gateway**: allows private subnets to reach internet through a public IP address, while internet can't reach the private subnet. AWS charges NAT Gateways per hour of availability plus data processing charges per Gigabytes. 
+**AWS PrivateLink**: allows access to some AWS services (EC2, ELB, Kinesis Streams, Systems Manager (SSM), Service Catalog, and Amazon SNS) from private subnets. It doesn't create public IPs; instead, a Elastic Network Interfaces (ENI) with private IPs in the VPC.
 
 **References**
 
