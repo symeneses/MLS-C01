@@ -9,5 +9,5 @@
 ### Big Data and Analytics Services
 - [Elasticsearch](Elasticsearch.md)
 - [Apache Spark: Glue](Glue.md)
-- [Data Streaming: Kinesis](Glue.md)
+- [Data Streaming: Kinesis](Kinesis.md)
 - [Workflows: Data Pipeline and Step functions](Workflows.md)
