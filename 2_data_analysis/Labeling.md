@@ -7,7 +7,7 @@ Web service that provides an on-demand, scalable, human workforce **Workers** to
 - Submissions are reviewed against a defined set of criteria e.g agreement among workers
 
 
-## Amazon Sagermaker Ground Truth
+## Amazon SageMaker Ground Truth
 
 It offers access to human labelers, built-in workflows and interfaces for labeling.
 With **automated data labeling**, as the model is learning will send only ambiguous cases to a human.

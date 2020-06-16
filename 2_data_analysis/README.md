@@ -10,4 +10,4 @@
 ### AWS Services
 - [Analytics: Athena and QuickSight](Analytics.md)
 - [Map Reduce: EMR](ElasticMapReduce.md)
-- [Labelling: Mechanical Turk and Sagermaker Ground Truth](Labeling.md)
+- [Labeling: Mechanical Turk and SageMaker Ground Truth](Labeling.md)
