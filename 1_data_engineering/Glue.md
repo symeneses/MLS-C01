@@ -4,9 +4,13 @@ ETL **serverless** service to categorize, clean and enrich data. Glue can be use
 
 ## AWS Glue Data Catalog
 
-Metadata repository which auto infers and versions schemas, including semi-structured data as  such as clickstream or process logs. Integrated with Athena and Redshift. 
+Metadata repository which auto infers and versions schemas, including semi-structured data as  such as clickstream or process logs. Integrated with Athena and Redshift.
 
-This catalog is normally populated using **Crawlers** (compatible with JSON, Parquet, CSV, relational DB) which can be executed on a Schedule or On Demand. This allows us to execute serverless queries against a S3 data lake, as the Data Catalog keeps the metadata from S3 in sync. New databases and tables can be create in the console, using AWS CloudFormation templates, or through migration from an Apache Hive metastore.
+This metadata is saved in **Databases** with different **Tables**. The tables can have as a source: S3, Kinesis and Kafka. New databases and tables can be create in the console, using AWS CloudFormation templates, or through migration from an Apache Hive metastore.
+
+The catalog is normally populated using **Crawlers** (compatible with JSON, Parquet, CSV, relational DB) which can be executed on a Schedule or On Demand. The crawlers can be created from a data source (S3, JDBC, DynamoDB) or existing catalog tables. T
+
+This allows us to execute serverless queries against a S3 data lake or Kinesis stream, as the Data Catalog keeps the metadata in sync. 
 
 ## ETL engine
 
@@ -34,3 +38,4 @@ AWS Glue offers **Workflows** to connected multiple crawlers, jobs, and triggers
 # References
 
 - [AWS Documentation](https://docs.aws.amazon.com/index.html)
+- [New – Serverless Streaming ETL with AWS Glue](https://aws.amazon.com/blogs/aws/new-serverless-streaming-etl-with-aws-glue/)
