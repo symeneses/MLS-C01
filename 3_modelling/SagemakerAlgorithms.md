@@ -1,23 +1,23 @@
-# SageMaker
-
-SageMaker was designed to help data scientist to do the entire ML flow:
-- Fetching and cleaning data
-- Training and evaluating models
-- Deployment and results evaluation
-
-Powered by these nice functionalities:
-- SageMaker Studio: Integrated Development Environment (IDE) for ML
-- SageMaker Experiments: tracks, compares and evaluates experiments and model versions
-- SageMaker Autopilot: automatic model tuning
-- SageMaker Debugger: identifies issues during training job saving the internal model state at periodic intervals
-- SageMaker Model Monitor: monitors model performance in production and the quality of the data input
-
 # Built-In Algorithms
 
-Input: RecordIO (wrapper Protobuf) or CSV
-Modes:
-- File: training data is downloaded to an encrypted Amazon Elastic Block Store (EBS)
-- Pipe: use streamed data to the training instances, saving disk space and speeding up the jobs
+SageMaker provides different algorithms for most ML use cases. We will review them seeing their input and important aspects to consider for training.
+
+## General considerations
+
+### Data Input
+- **RecordIO**: is a set of binary data exchange formats to divide data in records. This format reduces size and facilitate continuos reading. AWS recommends this format as build-in algorithms are optimized to with work with it
+- **CSV**: CSV file with no header with the target variable in the first column, for unsupervised learning defined `text/csv;label_size=0` in the content type 
+
+### Modes
+
+- **File**: training data is downloaded to an encrypted Amazon Elastic Block Store (EBS)
+- **Pipe**: use streamed data to the training instances, saving disk space and speeding up the jobs. Only supported with RecordIO formatted input data
+
+### Training
+
+- Most algorithms perform better with GPUs instances, with exception of `XGBoost` which was not developed by Amazon
+- Amazon SageMaker models are stored as `model.tar.gz` in a S3 bucket, when the model is untarred, it contains the file `model_algo-1`, which is a serialized **Apache MXNet** object
+- For inference, the content type can be `text/csv`, `application/json`, and `application/x-recordio-protobuf`. XGBoost only supports `text/csv`
 
 ## Linear Learner
 
@@ -55,9 +55,9 @@ Unsupervised anomaly detection algorithm developed by Amazon. Available also in 
 - CSV files as it wasn't designed specifically for SageMaker
 
 **Training**
-- It's memory intensive and runs on CPU only. 
+- It's memory intensive and runs on CPU only
 - Important Hyperparameters: 
-  - `subsample`: subsample ration, it helps to prevent overfitting
+  - `subsample`: subsample ratio, it helps to prevent overfitting
   - `eta`: step size shrinkage used in updates to prevent overfitting
   - `num_round`: numbers of runs
   - `alpha`: Regularization parameter for L1
@@ -83,7 +83,7 @@ Unsupervised anomaly detection algorithm developed by Amazon. Available also in 
 **Training**
 - It can use the regular algorithm or randomized for large datasets
 
-## K-Means (KNN)
+## K-Means
 
 **Input**
 - Optional test channel
@@ -167,7 +167,8 @@ Based on the Neural Variational Inference algorithm. Used to organized documents
 
 **Training**
 - It runs on CPUs or GPUs
-- Important Hyperparameters: 
+- Important Hyperparameters:
+  - `num_topics`: number of topics
 
 ## Seq2Seq
 
@@ -185,6 +186,8 @@ Implemented using RNN and CNN with attention.
   - `num_layers_decoder`: Number of layers for Decoder rnn or cnn.
 
 ## Object2Vec
+
+[//]: <> (TODO Extend as it's unique in AWS)
 
 Create vectors or embeddings of high-dimensional objects, where similar objects are close. Similar to Word2Vec, encoding sentences or paragraphs.
 
@@ -205,7 +208,8 @@ Create vectors or embeddings of high-dimensional objects, where similar objects 
 
 **Training**
 - ResNet CNN
-- Important Hyperparameters: 
+- Important Hyperparameters:
+#TODO
 
 ## Object Detection
 

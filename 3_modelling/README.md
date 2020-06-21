@@ -12,4 +12,5 @@
 
 ### AWS Services
 - [ML Services in AWS](AWSMLservices.md)
-- [SageMakerBuilt-in Algorithms intro](SagemakerAlgorithms.md)
+- [Amazon SageMaker](SageMaker.md)
+- [SageMaker Built-in Algorithms intro](SageMakerAlgorithms.md)
