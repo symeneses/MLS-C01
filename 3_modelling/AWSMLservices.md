@@ -1,5 +1,7 @@
 # AWS services for Machine Learning
 
+Apart from SageMaker, Amazon offers multiple services for computing, storage and high-level services to add ML capabilities to our applications.
+
 ## Computing 
 
 ### EC2 Instances
@@ -24,6 +26,8 @@ SageMaker executes code in training and inference docker images. There are prebu
 
 `pip install sagemaker-training`
 
+To use GPU devices, the containers need to be NVIDIA-docker compatible, for that, the CUDA toolkit has to be included in the containers.
+
 ## High-Level Services
 
 ### Amazon Forecast
@@ -45,7 +49,8 @@ Translate CSV or TMX files. New words can be added for translation.
 
 ### Amazon Polly
 
-Neural Text-To-Speech with many voices and supports many languages. You can customized lexicon, speech marks, emphasis, pronunciation, breathing, whispering, speech rate, pitch, and pauses.
+Neural Text-To-Speech with many voices and supports many languages. You can customized lexicon, speech rate, pitch, and pauses. With Speech Synthesis Markup Language (SSML), additionally emphasis of words or sentences, pronunciation, breathing and whispering can be controlled. 
+As output, Polly can return speech marks, which is metadata indicating when a word starts or ends. This is useful for visualizations as facial animation or highlighting of words in a text when they are pronounced. 
 
 ### Amazon Lex
 
@@ -64,8 +69,10 @@ It makes image and video analysis easier. It includes: facial analysis, celebrit
 - **Amazon Augmented AI (A2I)**: workflows for human review of predictions
 - **DeepLens**: Deep learning-enabled video camera
 - **Amazon Sumerian**: Tools to create high-quality virtual reality (VR) experiences
+- **Amazon Braket**: Quantum computing, now in preview
+
 
 # References
 
 - [AWS Documentation](https://docs.aws.amazon.com/index.html)
-- [Amazon SageMaker Developer Guide](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-dg.pdf?icmpid=docs_sagemaker_lp)
+- [Amazon SageMaker Developer Guide](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-dg.pdf)
