@@ -208,8 +208,6 @@ Create vectors or embeddings of high-dimensional objects, where similar objects 
 
 **Training**
 - ResNet CNN
-- Important Hyperparameters:
-#TODO
 
 ## Object Detection
 
@@ -220,7 +218,6 @@ Identify objects with their bounding boxes.
 
 **Training**
 - Uses Single Shot multibox Detector (SSD) on top of a CCN (VGG-16 or ResNet-50)
-- Important Hyperparameters: 
 
 ## Semantic Segmentation
 
