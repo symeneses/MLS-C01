@@ -1,6 +1,7 @@
 # Kinesis
 
-Managed Apache Kafka used for streaming data (logs, IoT, social media, market data feeds, web clickstream).
+Managed service for streaming data (logs, IoT, social media, market data feeds, web clickstream) with added functionalities for Analytics and Machine Learning.
+AWS also offers Amazon Managed Streaming for Apache Kafka (Amazon MSK) to work with streaming data.
 
 ## Services
 
