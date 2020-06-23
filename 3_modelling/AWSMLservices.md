@@ -39,6 +39,9 @@ For inference, use the [SageMaker Inference Toolkit](https://github.com/aws/sage
 ```sh 
 pip3 install multi-model-server sagemaker-inference
 ```
+To load a model artifact not trained in SageMaker, set the `ModelDataUrl` with the model location, the file should be a `tar.gz`. 
+The web server in the container should respond to `/invocations` and `/ping` (HTTP 200 status code and an empty body) on port 8080 and accept socket connection requests within 250 ms, and the model should respond within 60 seconds.
+
 
 ## High-Level Services
 
