@@ -55,7 +55,7 @@ Unsupervised anomaly detection algorithm developed by Amazon. Available also in 
 - CSV files as it wasn't designed specifically for SageMaker
 
 **Training**
-- It's memory intensive and runs on CPU only
+- It's memory intensive and runs on CPU only, therefore, a `ml.m4` instance is recommended
 - Important Hyperparameters: 
   - `subsample`: subsample ratio, it helps to prevent overfitting
   - `eta`: step size shrinkage used in updates to prevent overfitting
