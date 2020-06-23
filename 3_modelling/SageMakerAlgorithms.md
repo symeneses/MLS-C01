@@ -148,6 +148,7 @@ RNN for time series prediction
 Used mainly for text classification and Word2Vec.
 
 **Input**
+- Text must have space-separated tokens, including punctuation marks
 - For text classification: `<label> <sentence>`
 - For Word2Vec: `<sentence>`
 
