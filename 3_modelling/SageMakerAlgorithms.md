@@ -51,6 +51,8 @@ Unsupervised anomaly detection algorithm developed by Amazon. Available also in 
 
 ## XGBoost
 
+Open-source software library that distributed Gradient Boosting
+
 **Input**
 - CSV files as it wasn't designed specifically for SageMaker
 
@@ -58,11 +60,13 @@ Unsupervised anomaly detection algorithm developed by Amazon. Available also in 
 - It's memory intensive and runs on CPU only, therefore, a `ml.m4` instance is recommended
 - Important Hyperparameters: 
   - `subsample`: subsample ratio, it helps to prevent overfitting
-  - `eta`: step size shrinkage used in updates to prevent overfitting
+  - `eta` or `learning_rate`: step size shrinkage used in updates to prevent overfitting
+  - `gamma` or `min_split_loss`: minimum loss reduction required to do a partition
+  - `scale_pos_weight`: balance of positive and negative weights, helpful for unbalanced datasets, recommended to set with `sum(negative_samples)/sum(positive_samples)`
   - `num_round`: numbers of runs
   - `alpha`: Regularization parameter for L1
   - `lambda`: Regularization parameter for L2 
-  - `min_child_weight`: Minimum sum of instance weight (hessian) needed in a child to continue partitioning.
+  - `min_child_weight`: Minimum sum of instance weight (hessian) needed in a child to continue partitioning
 
 ## K-Nearest Neighbors (KNN)
 
