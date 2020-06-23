@@ -10,8 +10,9 @@ Amazon Aurora (Aurora) is an open source relational database engine built by Ama
 
 # Redshift
 
-Relational database query and management system designed to build data warehouses for business intelligence applications. It optimizes query performance through a combination of parallel processing, **columnar data storage**, and data compression encoding schemes: compressed data is load in memory and uncompressed for query execution. 
-Data can be query directly in S3 using Redshift Spectrum. 
+Relational database query and management system designed to build data warehouses for business intelligence applications. It optimizes query performance through a combination of parallel processing, **columnar data storage**, and data compression encoding schemes: compressed data is load in memory and uncompressed for query execution.
+To create a data warehouse with Redshift, a **Redshift Cluster** needs to be created, which can have multiple databases. Data can be queried in the console, in the query editor or from any SQL client tool using JDBC and ODBC connections.
+Data can be query directly in S3 using **Redshift Spectrum**.
 
 # DynamoDB
 
