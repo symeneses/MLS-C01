@@ -26,6 +26,8 @@ IAM is a web service for securely controlling access to AWS services through dif
 - **Actions that need user permissions:** CreateTrainingJob, CreateModel, CreateEndpointConfig, CreateTransformJob, CreateHyperParameterTuningJob, CreateNotebookInstance and UpdateNotebookInstance
 - **Predefined policies:** AmazonSageMakerReadOnly, AmazonSageMakerFullAccess, AdministratorAccess and DataScientist
 
+SageMaker does not support Resource-Based Policies. To control access to a resource, `IAM policies` can  be created with a `ResourceTag` condition.
+
 ## Amazon Virtual Private Cloud (Amazon VPC) & SageMaker
 
 Enable execution of resources into a private virtual network. Inside a VPC, subnets can be created to add more layers of security.
