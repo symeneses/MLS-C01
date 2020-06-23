@@ -1,12 +1,12 @@
 ## Athena
 
-Serverless query service to analyze data in Amazon S3. It supports CSV, JSON, or columnar data in Apache Parquet and Apache ORC (which performs better) and is integrated with the AWS Glue Data Catalog. 
+Serverless query service to analyze data in Amazon S3. It supports CSV, JSON, and columnar data such as Apache Parquet or Apache ORC (Optimized Row Columnar), giving a much better performance. Athena is integrated with the AWS Glue Data Catalog. 
 
 - It is based on Apache Presto
 - It can be accessed through the console, API, or SQL clients connected with JDBC or ODBC drivers (i.e. PowerBI, Tableau).
 - User-defined functions and stored procedures are not supported
 - It could be used to analyze logs from CloudTrail, CloudFront, ELB, etc.
-- A typical pipeline for a data lake could be: S3 > Glue (ETL) > Athena > QuickSight (Visualizations).
+- A typical pipeline for a data lake could be: S3 > Glue or Kinesis Firehose (ETL) > Athena > QuickSight (Visualizations).
 
 ## QuickSight
 
