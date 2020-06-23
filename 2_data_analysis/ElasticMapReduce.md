@@ -16,10 +16,9 @@ Managed cluster platform based on the Hadoop framework to run Big Data tools suc
 
 ## Storage
 
-- HDFS: Good performance but it's ephimeral
-- EMRFS: Allow to use S3 as HDFS
-- Local system
-- EBS for HDFS
+- **Hadoop Distributed File System (HDFS)**: Good performance but it's ephemeral, used only to save intermediate results
+- **EMR File System (EMRFS)**: Access data in S3 directly via the `s3://` scheme, saves the metadata in Dynamo DB
+- **Local system**: default disk in the EC2 instance
 
 
 # References
