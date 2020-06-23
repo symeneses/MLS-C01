@@ -72,7 +72,11 @@ To accomplish its mission SageMaker is powered by these nice functionalities:
 ### Deployment options 
 
 - Persistent endpoint `InvokeEndpoint` using Amazon SageMaker hosting services
+  - Invocation requests can be distributed across multiple `production variants` with predefined weights to perform A/B test
+  - For testing, a `TargetVariant` can be selected in the request
+  - Weights of variants can be updated to choose the best performing model using `UpdateEndpointWeightsAndCapacities`
 - Amazon SageMaker batch transform to get predictions for a entire dataset
+- Other AWS Services useful to deploy models are discussed [here](/4_implementation/Deploying.md)
 
 ## SageMaker SDK
 
