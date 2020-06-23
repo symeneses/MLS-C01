@@ -22,11 +22,23 @@ If EC2 instances are used for ML without SageMaker, it's useful to use AMIs crea
 
 ### ECR
 
-SageMaker executes code in training and inference docker images. There are prebuilt images or one can be customized. To make a container Sagemaker compatible, AWS developed the [SageMaker Training Toolkit](https://github.com/aws/sagemaker-training-toolkit) python library.
+SageMaker executes code in training and inference docker images. There are prebuilt images or one can be customized. 
 
-`pip install sagemaker-training`
+To make a container Sagemaker compatible, AWS developed the [SageMaker Training Toolkit](https://github.com/aws/sagemaker-training-toolkit) python library.
 
-To use GPU devices, the containers need to be NVIDIA-docker compatible, for that, the CUDA toolkit has to be included in the containers.
+```sh 
+pip install sagemaker-training
+```
+
+Especify the environment variable `SAGEMAKER_PROGRAM` with the script containing the training code.
+
+To use GPU devices, the containers need to be NVIDIA-docker compatible, for that, the `CUDA toolkit` has to be included in the containers.
+
+For inference, use the [SageMaker Inference Toolkit](https://github.com/aws/sagemaker-inference-toolkit). Install the library in the container and set the entrypoint with a script that calls the model server.
+
+```sh 
+pip3 install multi-model-server sagemaker-inference
+```
 
 ## High-Level Services
 
