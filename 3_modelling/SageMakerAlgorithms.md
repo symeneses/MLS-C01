@@ -11,7 +11,7 @@ SageMaker provides different algorithms for most ML use cases. We will review th
 ### Modes
 
 - **File**: training data is downloaded to an encrypted Amazon Elastic Block Store (EBS)
-- **Pipe**: use streamed data to the training instances, saving disk space and speeding up the jobs. Only supported with RecordIO formatted input data
+- **Pipe**: use streamed data to the training instances, saving disk space and speeding up the jobs. Only supported with RecordIO formatted input data for some algorithms
 
 ### Training
 
@@ -22,6 +22,7 @@ SageMaker provides different algorithms for most ML use cases. We will review th
 ## Linear Learner
 
 **Input**
+- RecordIO with `Float32` tensors or CSV, supporting Pipe mode for both formats
 - Data has to be normalized before or on demand while executing
 - For better performance, data should be shuffled
 
@@ -54,7 +55,9 @@ Unsupervised anomaly detection algorithm developed by Amazon. Available also in 
 Open-source software library that distributed Gradient Boosting
 
 **Input**
-- CSV files as it wasn't designed specifically for SageMaker
+- CSV files or LibSVM (`<label> <index1>:<value1>... <indexN>:<valueN>`)
+- Supported only in File mode
+- Optional validation channel
 
 **Training**
 - It's memory intensive and runs on CPU only, therefore, a `ml.m4` instance is recommended
@@ -72,27 +75,33 @@ Open-source software library that distributed Gradient Boosting
 
 **Input**
 - First columns are labels
+- RecordIO or CSV
+- Optional test channel
 
 **Training**
 - It reduces dimensions and does random sampling
+- Runs on CPU or instances with single GPU
 - Important Hyperparameters: 
   - `k`: number of neighbors
-
 
 ## Principal Components Analysis (PCA)
 
 **Input**
-- RecordIO or CSV
+- RecordIO or CSV in File mode
+- Optional test channel
 
 **Training**
+- Runs on GPU or CPU
 - It can use the regular algorithm or randomized for large datasets
 
 ## K-Means
 
 **Input**
+- RecordIO or CSV
 - Optional test channel
 
 **Training**
+- Runs on CPU or instances with single GPU
 - To initialize, it can do it at random or with kmeans++, which tries to get clusters' centers far apart from each other
 - Important Hyperparameters: 
   - `k`: number of clusters
@@ -101,24 +110,25 @@ Open-source software library that distributed Gradient Boosting
 ## Latent Dirichlet Allocation (LDA)
 
 **Input**
-- CSV with word counts, total size = number of records * vocabulary size
+- RecordIO or CSV in File mode
+- For CSV with word counts and total size = number of records * vocabulary size
 
 **Training**
-- It runs on CPUs
+- It supports only single-instance CPU training
 - Important Hyperparameters: 
   - `num_topics`: number of topics
   - `alpha0`: concentration parameter, low values give more sparse topics
 
 ## Factorization Machines
 
-Used mainly for recommended systems or use cases with sparse data
+Used mainly for recommended systems or use cases with sparse data. It calculates feature interactions as the inner product of the factors (vectors embeddings) of each feature. If 2 features are similar, their cosine similarity is higher.
 
 **Input**
-- RecordIO with Float32
+- RecordIO with `Float32`
+- Optional Test channel 
 
 **Training**
-- It calculates feature interactions as the inner product of the factors (vectors embeddings) of each feature. If 2 features are similar, their cosine similarity is higher.
-- CPU recommended
+- CPU is recommended, GPU for dense data
 
 ## IP Insights
 
@@ -126,6 +136,8 @@ Unsupervised model to find patterns in IP addresses usage, used for security to 
 
 **Input**
 - CSV containing `<entity>, <IP>`
+- Optional validation channel
+- Supported only in File mode
 
 **Training**
 - It generates negative samples automatically
@@ -140,24 +152,30 @@ RNN for time series prediction
 
 **Input**
 - It can train multiple related time series
+- Supported only in File mode
+- Input is given in JSON lines in a json, gzip or Parquet file
+- Optional test channel
 
 **Training**
 - Finds frequencies and seasonality
-- Runs on CPU's and GPU's
+- I needs at least training time series is at least 300
+- Runs on CPU's or GPU's
 - Special Hyperparameters: 
   - `context_length`: number of time-points seen before making a prediction
 
 ## BlazingText
 
-Used mainly for text classification and Word2Vec.
+Used mainly for multi-class, multi-label text classification and Word2Vec. It extends the **fastText** text classifier to work with multi-core CPUs or GPUs and Word2Vec on GPUs with optimized `CUDA` kernels.
 
 **Input**
-- Text must have space-separated tokens, including punctuation marks
-- For text classification: `<label> <sentence>`
+- File with text with space-separated tokens, including punctuation marks
+- For text classification: `<label> <sentence>`, or Augmented Manifest (configurable JSON file) in Pipe Mode
 - For Word2Vec: `<sentence>`
+- Validation channel in the supervised mode (classification)
 
 **Training**
 - Word2Vec works with different modes: Continuous Bag of Words (CBOW), Skip-gram and Batch Skip-gram which can be distributed as the order of words doesn't matter.
+- Single instance GPU or CPU
 - Special Hyperparameters: 
   - `vector_dim`: dimension of the word vectors
   - `window_size`: (for W2V) number of words surrounding the target word used for training
@@ -169,6 +187,7 @@ Based on the Neural Variational Inference algorithm. Used to organized documents
 
 **Input**
 - Integer tokens
+- Optional test and validation channels
 
 **Training**
 - It runs on CPUs or GPUs
@@ -177,10 +196,12 @@ Based on the Neural Variational Inference algorithm. Used to organized documents
 
 ## Seq2Seq
 
-Implemented using RNN and CNN with attention.
+Encode-decoder architecture implemented using RNN and CNN with attention. Used for, among others, Machine Translation (MT), text summarization, speech-to-text.
 
 **Input**
-- Integers tokens
+- Integers tokens in RecordIO format
+- Train, validation and vocab (`vocab.src.json and vocab.trg.json`) channels
+- It supports only File mode
 
 **Training**
 - It runs on GPU's and a single machine
@@ -192,17 +213,24 @@ Implemented using RNN and CNN with attention.
 
 ## Object2Vec
 
-[//]: <> (TODO Extend as it's unique in AWS)
-
-Create vectors or embeddings of high-dimensional objects, where similar objects are close. Similar to Word2Vec, encoding sentences or paragraphs.
+Create vectors or embeddings of high-dimensional objects, where similar objects are close. Two **Encoders** convert the two **Input** channels in vectors on a fixed length which are the input to a **Comparator**, which scores the relation of the pairs. The algorithm aims to find encoders that minimize the difference between the values calculated by the comparator and the given label.
+Similar to Word2Vec, encoding sentences or paragraphs in vectors which can be used as features in downstream tasks. Useful for recommendation systems as well.
 
 **Input**
 - Pairs of integer token lists, these can be of different size
 - The label can be a tag with the relation of the pairs or the strength of their relation
+- Supported only in File mode with JSON lines as input
+- Optional test and validation channels
 
 **Training**
+- It runs on CPU or on multiple GPUs in a single instance 
 - Encoders are Average-pooled embeddings, Hierarchical CNNs or BiLSTMs.
 - With the environment variable `INFERENCE_PREFERRED_MODE`, it can be selected which embeddings are loaded in the GPU for inference (`classification` or `embeddings`)
+- Special Hyperparameters: 
+  - `token_embedding_dim`: input layer dimension
+  - `enc_dim`: encoding dimension
+  - `negative_sampling_rate`: ratio of negative to positive samples to be created automatically
+  - `comparator_list`: ways to compare the embedding: `hadamard` (element-wise product), `concat` (concatenation), and `abs_diff` (absolute difference). It can take multiple options, concatenating vectors in the given order.
 
 ## Image Classification
 
@@ -212,7 +240,8 @@ Create vectors or embeddings of high-dimensional objects, where similar objects 
 - Augmented Manifest (configurable JSON file) 
 
 **Training**
-- ResNet CNN
+- ResNet CNN, therefor
+- Trained only on GPU
 
 ## Object Detection
 
@@ -220,8 +249,10 @@ Identify objects with their bounding boxes.
 
 **Input**
 - RecordIO or images (jpg or png)
+- Optional test and validation channels
 
 **Training**
+- Runs only on GPUs
 - Uses Single Shot multibox Detector (SSD) on top of a CCN (VGG-16 or ResNet-50)
 
 ## Semantic Segmentation
@@ -230,10 +261,11 @@ Pixel-level object classification
 
 **Input**
 - RecordIO or images (jpg or png)
-- Augmented Manifest (configurable JSON file) 
+- Augmented Manifest (configurable JSON file)
+- Train and validation channels, and label_map and model optional channels
 
 **Training**
-- Can be trained on GPUs (p2 and p3)
+- Trained only on a single instance GPU (p2 and p3)
 - Built on MXNet Gluon
 
 # References
