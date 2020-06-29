@@ -75,6 +75,8 @@ To accomplish its mission SageMaker is powered by these nice functionalities:
   - Invocation requests can be distributed across multiple `production variants` with predefined weights to perform A/B test
   - For testing, a `TargetVariant` can be selected in the request
   - Weights of variants can be updated to choose the best performing model using `UpdateEndpointWeightsAndCapacities`
+  - It supports autoscaling of registers models based on trigger from CloudWatch. For this, an `Autoscaling policy` (`TargetTrackingScalingPolicyConfiguration`) is defined. 
+  - To update an endpoint (`UpdateEndpoint`) with autoscaling, the policy has to be deleted (`DeleteScalingPolicy`) and the the scalable variant deregistered (`DeregisterScalableTarget`).
 - Amazon SageMaker batch transform to get predictions for a entire dataset
 - Other AWS Services useful to deploy models are discussed [here](/4_implementation/Deploying.md)
 
@@ -90,6 +92,7 @@ Its functionality is split in these APIs.
 - Module for tuning and training jobs, including AutoML and Debugger
 - The `Processor` class performs data pre- and post- processing
 - An `Estimator` trains an algorithm object and return a `Model`
+- The `HyperparameterTuner` class interacts with hyperparameter tuning jobs
 **Inference APIs**
 - The class `Model` is deployable in an `Endpoint`
 - The `RealTimePredictor` makes requests to get predictions the `Endpoint` 
