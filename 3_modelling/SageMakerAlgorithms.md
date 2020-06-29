@@ -62,7 +62,7 @@ Open-source software library that distributed Gradient Boosting
 **Training**
 - It's memory intensive and runs on CPU only, therefore, a `ml.m4` instance is recommended
 - Important Hyperparameters: 
-  - `subsample`: subsample ratio, it helps to prevent overfitting
+  - `subsample`: ratio of data taken in each iteration. It helps to prevent overfitting
   - `eta` or `learning_rate`: step size shrinkage used in updates to prevent overfitting
   - `gamma` or `min_split_loss`: minimum loss reduction required to do a partition
   - `scale_pos_weight`: balance of positive and negative weights, helpful for unbalanced datasets, recommended to set with `sum(negative_samples)/sum(positive_samples)`
