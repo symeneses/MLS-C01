@@ -20,9 +20,9 @@ If EC2 instances are used for ML without SageMaker, it's useful to use AMIs crea
 
 - AWS Deep Learning AMIs: instances pre-installed with deep learning frameworks and interfaces such as TensorFlow, PyTorch, Apache MXNet, Chainer, Gluon, Horovod, and Keras. They are available options with Conda, Amazon Linux, Ubuntu and CUDA.
 
-### ECR
+### Amazon Elastic Container Service (Amazon ECS)
 
-SageMaker executes code in training and inference docker images. There are prebuilt images or one can be customized. 
+SageMaker executes code in training and inference docker images. SageMaker offers `pre-built Docker images` to train custom algorithms (available for scikit-learn, Spark ML, TensorFlow, MXNet, PyTorch, Chainer). If a pre-built container is `extended` or a `custom container image` is built (**Build Your Own Container (BYOC)**), the `AmazonEC2ContainerRegistryFullAccess` permission is needed for the role execute the job
 
 To make a container Sagemaker compatible, AWS developed the [SageMaker Training Toolkit](https://github.com/aws/sagemaker-training-toolkit) python library.
 
@@ -30,7 +30,7 @@ To make a container Sagemaker compatible, AWS developed the [SageMaker Training 
 pip install sagemaker-training
 ```
 
-Especify the environment variable `SAGEMAKER_PROGRAM` with the script containing the training code.
+Specify the environment variable `SAGEMAKER_PROGRAM` with the script containing the training code.
 
 To use GPU devices, the containers need to be NVIDIA-docker compatible, for that, the `CUDA toolkit` has to be included in the containers.
 
