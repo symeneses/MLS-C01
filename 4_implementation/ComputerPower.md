@@ -1,12 +1,12 @@
 ## Distributed training
 
 ### Parameter Servers
-Uses dedicated processes to collect gradients computed by workers, aggregate them and distribute the updated gradients back to the workers in an asynchronous manner. Each instance runs a parameter server process and a worker and communicate with the other workers.  
+Uses dedicated processes to collect gradients computed by workers, aggregate them and distribute the updated gradients back to the workers in an `asynchronous` manner. Each instance runs a parameter server process and a worker and communicate with the other workers.  
 If a worker falls behind, it might submit stale gradients, which means gradients are not updated. If this is happening, reducing the learning rate can be useful. 
-To work with this option, a script is available tin the SageMaker TensorFlow container.
+To work with this option, a script is available in the SageMaker TensorFlow container.
 
 ### Horovod Framework
-Uber's Open Source Distributed Deep Learning Framework for TensorFlow 1.12 or newer, Keras, PyTorch, and Apache MXNet. Horovod uses `Ring-AllReduce`, which means the data depends on the number of clusters and not on the number of workers or processes. The gradients are updated synchronously, then, gradients are sent with all the processes in the batch finish. 
+Uber's Open Source Distributed Deep Learning Framework for TensorFlow 1.12 or newer, Keras, PyTorch, and Apache MXNet. Horovod uses `Ring-AllReduce`, which means the data depends on the number of clusters and not on the number of workers or processes. The gradients are updated `synchronously`, then, gradients are sent when all the processes in the batch finish. 
 SageMaker automates the Horovod cluster setup.
 
 ## Managed Spot Training
