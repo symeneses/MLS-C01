@@ -1,12 +1,12 @@
 # RDS
 
-Amazon Relational Database Service (Amazon RDS) is used to set up and operate scalable DB instances which run on a DB engine. In High Availability mode (HA), the master and standby databases are deployed in different availability zones (Multi-AZ). 
+Amazon Relational Database Service (Amazon RDS) is used to set up and operate scalable DB instances which run on a DB engine. In `High Availability` mode (HA), the master and standby databases are deployed in different availability zones (Multi-AZ). 
 It manages backups, software patching, automatic failure detection, replicas (read replicas for MySQL, MariaDB, or PostgreSQL) and recovery.
-For large database migration to RDS with minimal downtime, AWS offers the Database Migration Service (DMS).
+For large database migration to RDS with minimal downtime, AWS offers the `Database Migration Service (DMS)`.
 
 # Aurora
 
-Amazon Aurora (Aurora) is an open source relational database engine built by Amazon that supports MySQL and PostgreSQL. Data is store on a cluster volume, unlike RDS which stores data on EBS volume.
+Amazon Aurora (Aurora) is an open source **relational database** engine built by Amazon that supports MySQL and PostgreSQL. Data is store on a cluster volume, unlike RDS which stores data on EBS volume.
 
 # Redshift
 
@@ -17,7 +17,7 @@ Data can be query directly in S3 using **Redshift Spectrum**.
 # DynamoDB
 
 Amazon DynamoDB is a fully managed NoSQL **Key-value** database service. It scales the data and traffic for a table over a sufficient number of servers to handle the request capacity. 
-It supports on demand backups and point-in-time recovery (to any point in time during the last 35 days) and DynamoDB Streams which captures data modification events in DynamoDB tables.
+It supports on demand backups and point-in-time recovery (to any point in time during the last 35 days) and `DynamoDB Streams` which captures data modification events in DynamoDB tables.
 It is serverless as S3, so it doesn't require provisioning.
 
 # ElastiCache
