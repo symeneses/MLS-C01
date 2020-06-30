@@ -21,13 +21,21 @@ IAM is a web service for securely controlling access to AWS services through dif
 - IAM role: use to authenticate a specific resources i.e a EC2 instance
 - IAM policy: define the permissions for a user, group, or role
 
-### IAM in SageMaker
+### AWS Identity and Access Management (IAM) in SageMaker
 
 - **Actions that need user permissions:** CreateTrainingJob, CreateModel, CreateEndpointConfig, CreateTransformJob, CreateHyperParameterTuningJob, CreateNotebookInstance and UpdateNotebookInstance
 - **Predefined policies:** AmazonSageMakerReadOnly, AmazonSageMakerFullAccess, AdministratorAccess and DataScientist
 
 By default, roles have access to any Bucket that contains `sagemaker` in its name,  if access to buckets with a different name is required, the role used to execute the jobs must have a policy that gives the SageMaker service the `S3FullAccess` permission. 
 SageMaker does not support Resource-Based Policies. To control access to a resource, `IAM policies` can  be created with a `ResourceTag` condition.
+
+## AWS Key Management Service (KMS) in SageMaker
+
+### Data at Rest
+As it was mentioned before in S3, buckets or objects can be encrypted. To use this encrypted data, the IAM role used from SageMaker needs permissions to encrypt and decrypt data with KMS. In SageMaker, passing a KMS key with the parameter `VolumeKmsKeyId` or using a transient one, the storage volumes (*/opt/ml/*  and */home/ec2-user/SageMaker* for notebooks), jobs and endpoints can be encrypted.  
+
+### Data in transit
+Internode training communications can be encrypted enabling `EnableInterContainerTrafficEncryption` when sending a request to `CreateTrainingJob` or `CreateHyperParameterTuningJob`. This may increase training time for distributed and non build-in algorithms.
 
 ## Amazon Virtual Private Cloud (Amazon VPC) & SageMaker
 
