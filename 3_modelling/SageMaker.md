@@ -69,7 +69,7 @@ To accomplish its mission SageMaker is powered by these nice functionalities:
 - S3 URL to store the output
 - ECR path where the training code is stored
 
-For large datasets, distributed deep learning workloads or simply high throughput, a `Amazon FSx for Lustre` file system linked to a S3 bucket can be used. This will speep up the training as the data is lazy loaded. `Lustre` is a distributed parallel file system with high scalability and availability.
+For large datasets, distributed deep learning workloads or simply high throughput, a `Amazon FSx for Lustre` file system linked to a S3 bucket can be used. This will speed up the training as the data is lazy loaded. `Lustre` is a distributed parallel file system with high scalability and availability.
 
 Apart from a S3 URL, an `Amazon EFS file system` can be referenced in the `CreateTrainingJob` request. Amazon Elastic File System (EFS) is also used for the directories created by SageMaker Studio.
 
