@@ -2,7 +2,7 @@
 
 ## SageMaker Neo 
 
-Optimizes trained models in the hardware (Intel, NVIDIA, ARM, Cadence, Qualcomm, and Xilinx) where the model is deployed. It compiles TensorFlow, MXNet, and PyTorch models to create a executable that runs anywhere.
+Optimizes trained models in the hardware (Intel, NVIDIA, ARM, Cadence, Qualcomm, and Xilinx) where the model is deployed. It compiles TensorFlow, MXNet, and PyTorch models to create binary code and writes it in a shared object library, getting an executable that can run anywhere. The `compiler` saves two files: model definition and parameters. The `runtime` in execution loads these two files, and the shared object library.
 
 ## AWS IoTGreengrass
 
