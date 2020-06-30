@@ -12,7 +12,7 @@ SageMaker automates the Horovod cluster setup.
 ## Managed Spot Training
 
 For training complex model with large data, using spot instances is an option to save money. They need some time to become available, thus, they should be used for time taking tasks.
-Spot instances can be *interrupted* at any moment 2 minutes after being warned, therefore, it's a good practice to save checkpoints in S3. 
+Spot instances can be *interrupted* at any moment 2 minutes after being warned, therefore, it's a good practice to save `checkpoints` in S3. 
 
 ## Elastic Inference
 
