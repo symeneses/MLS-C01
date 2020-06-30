@@ -4,13 +4,13 @@ ETL **serverless** service to categorize, clean and enrich data. Glue can be use
 
 ## AWS Glue Data Catalog
 
-Metadata repository which auto infers and versions schemas, including semi-structured data as  such as clickstream or process logs. Integrated with Athena and Redshift.
+Metadata repository which auto infers and versions schemas, including semi-structured data such as clickstream or process logs. Integrated with Athena and Redshift.
 
 This metadata is saved in **Databases** with different **Tables**. The tables can have as a source: S3, Kinesis and Kafka. New databases and tables can be create in the console, using AWS CloudFormation templates, or through migration from an Apache Hive metastore.
 
-The catalog is normally populated using **Crawlers** (compatible with JSON, Parquet, CSV, relational DB) which can be executed on a Schedule or On Demand. The crawlers can be created from a data source (S3, JDBC, DynamoDB) or existing catalog tables. T
+The catalog is normally populated using **Crawlers** (compatible with JSON, Parquet, CSV, relational DB) which can be executed on a Schedule or On Demand. The crawlers can be created from a data source (S3, JDBC, DynamoDB) or existing catalog tables.
 
-This allows us to execute serverless queries against a S3 data lake or Kinesis stream, as the Data Catalog keeps the metadata in sync. 
+This allows to execute serverless queries against a S3 data lake or Kinesis stream, as the Data Catalog keeps the metadata in sync. 
 
 ## ETL engine
 
@@ -23,7 +23,7 @@ Most common Transformations
 - Map
 - **FindMatches** using ML
 
-AWS Glue provides access in the console to Amazon SageMaker notebooks, Apache Zeppelin notebooks (locally or on EC2) for scripting. You can create a development endpoint and access it locally using Zeppelin or PyCharm.
+AWS Glue provides access in the console to Amazon SageMaker notebooks and Apache Zeppelin notebooks (locally or on EC2) for scripting. You can create a development endpoint and access it locally using Zeppelin or PyCharm.
 
 ### Glue Scheduler
 
@@ -32,7 +32,7 @@ Schedule jobs and crawlers using a Unix-like CRON syntax.
 ### Glue Triggers
 
 Triggers are Data Catalog objects that execute ETL jobs based on events. They can be used to start crawlers, or execute ETL jobs as chains of dependent tasks.
-AWS Glue offers **Workflows** to connected multiple crawlers, jobs, and triggers.
+AWS Glue offers **Workflows** to connect multiple crawlers, jobs, and triggers.
 
 
 # References
