@@ -65,7 +65,7 @@ To accomplish its mission SageMaker is powered by these nice functionalities:
 ### Training parameters
 
 - S3 URL for training data
-- The compute resources to be use for model training (see options [here](ComputerPower.md)). It can also work in local mode
+- The compute resources to be use for model training (see options [here](ComputerPower.md)). It can also work in local mode, which is recommended for experimenting
 - S3 URL to store the output
 - ECR path where the training code is stored
 
@@ -84,8 +84,8 @@ To accomplish its mission SageMaker is powered by these nice functionalities:
 
 Along with Boto3, the SageMaker SDK provides the capabilities to go through the ML lifecycle using SageMaker, making possible to develop the code to work with SageMaker anywhere.
 - Compatible with Apache MXNet, Chainer, PyTorch, Scikit-Learn, SparkML Serving, TensorFlow and XGBoost
-- It has a Reinforcement Learning module
-- Supports integration for training and inference workflows with Airflow and Kubernetes
+- It has a Reinforcement Learning module which includes `Coach` and `Ray RLlib`. Ray RLlib supports TensorFlow, TensorFlow Eager and PyTorch.
+- Supports integration for training and inference workflows with `Airflow` and `Kubernetes`
 
 Its functionality is split in these APIs.
 **Training APIs**
