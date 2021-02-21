@@ -1,0 +1,9 @@
+version: '3'
+services:
+  aws:
+    build: .
+    image: symeneses/aws
+    env_file: secret.env
+    tty: true
+    volumes:
+    - .:/aws

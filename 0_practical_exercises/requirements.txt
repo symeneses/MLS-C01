@@ -1,0 +1,14 @@
+boto3
+elasticsearch
+ipykernel
+multi-model-server
+pandas
+requests
+requests_aws4auth
+sagemaker
+sagemaker-experiments
+sagemaker-inference
+sagemaker-training
+smdebug
+scikit-learn
+torch
